@@ -4,10 +4,12 @@ import { cartContext } from "../../Root";
 const Dashboard = () => {
     const { cart, wishList, removeFromCart, removeFromWishList, addToCart } = useContext(cartContext);
     const [activeTab, setActiveTab] = useState('cart');
-    const [sortedCart, setSortedCart] = useState(cart); // For sorted cart
+    const [sortedCart, setSortedCart] = useState(cart); 
     const [totalCost, setTotalCost] = useState(
         cart.reduce((sum, item) => sum + item.price, 0)
     );
+    const [finalCost, setFinalCost] = useState(0); 
+    const [showModal, setShowModal] = useState(false); 
 
     // Handle tab change
     const handleTabChange = (tab) => {
@@ -23,9 +25,10 @@ const Dashboard = () => {
     // Handle purchase (resets cart and total cost)
     const handlePurchase = () => {
         if (sortedCart.length > 0) {
-            alert("Thank you for your purchase!");
-            setSortedCart([]); // Clear the sorted cart
-            setTotalCost(0);
+            setFinalCost(totalCost);
+            setShowModal(true);
+            setSortedCart([]);
+            setTotalCost(0); 
         } else {
             alert("Your cart is empty.");
         }
@@ -106,7 +109,7 @@ const Dashboard = () => {
                                         <button
                                             onClick={() => {
                                                 removeFromCart(item.product_id);
-                                                setTotalCost(prev => prev - item.price); // Adjust total cost
+                                                setTotalCost((prev) => prev - item.price); // Adjust total cost
                                             }}
                                             className="bg-red-500 text-white p-2 rounded-full hover:bg-red-600"
                                         >
@@ -162,6 +165,30 @@ const Dashboard = () => {
                     </div>
                 )}
             </div>
+
+            {/* Modal */}
+            {showModal && (
+                <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center">
+                    <div className="bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
+                        <div className="text-center">
+                            <div className="text-green-500 text-6xl mb-4">
+                                <i className="fa-solid fa-check-circle"></i>
+                            </div>
+                            <h2 className="text-2xl font-bold mb-2">Congratulations!</h2>
+                            <p>Thank you for your purchase.</p>
+                            <p className="font-semibold">Total Price: ${finalCost.toFixed(2)}</p>
+                        </div>
+                        <div className="mt-6 text-center">
+                            <button
+                                onClick={() => setShowModal(false)}
+                                className="bg-purple-500 text-white px-6 py-2 rounded hover:bg-purple-600"
+                            >
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

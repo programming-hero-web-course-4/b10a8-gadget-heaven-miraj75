@@ -5,14 +5,14 @@ import { cartContext } from "../../Root";
 const ProductsDetails = () => {
     const data = useLoaderData();
     const { productId } = useParams();
-    const { addToCart ,addToWishList} = useContext(cartContext);
+    const { addToCart, addToWishList } = useContext(cartContext);
 
     const product = data.find(item => item.product_id == productId);
 
     return (
         <div className="relative p-6 bg-gray-100 min-h-screen flex justify-center items-center">
             <div className="absolute top-0 left-0 w-full h-40 bg-purple-600"></div>
-            
+
             {product ? (
                 <div className="relative bg-white rounded-lg shadow-md p-8 w-full max-w-3xl z-10">
                     <div className="text-center mb-6">
@@ -41,11 +41,9 @@ const ProductsDetails = () => {
                             <div className="mt-6 flex items-center">
                                 <span className="text-gray-700 font-semibold">Rating</span>
                                 <div className="flex items-center ml-2">
-                                    {/* Rating stars */}
                                     <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M10 15l5.09 3.64-1.64-6.36L18 8.36l-6.36-.27L10 2l-1.64 6.09-6.36.27L6.55 12l-1.64 6.36L10 15z" />
                                     </svg>
-                                    {/* More stars here */}
                                     <span className="ml-2 text-gray-600 text-sm">({product.rating})</span>
                                 </div>
                             </div>

@@ -17,7 +17,6 @@ const Navbar = () => {
                     <Link to="/dashboard" className="hover:text-blue-200">Dashboard</Link>
                 </div>
                 <div className="flex items-center gap-4">
-                    {/* Cart Icon with count */}
                     <div className="relative">
                         <i className="bg-white text-black rounded-full border-2 p-2 fa-solid fa-cart-shopping"></i>
                         {cart.length > 0 && (
@@ -26,8 +25,6 @@ const Navbar = () => {
                             </span>
                         )}
                     </div>
-
-                    {/* Wishlist Icon with count */}
                     <div className="relative">
                         <i className="bg-white text-black rounded-full border-2 p-2 fa-regular fa-heart"></i>
                         {wishList && wishList.length > 0 && (

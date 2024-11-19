@@ -26,8 +26,7 @@ const Home = () => {
                 </div>
             </div>
             <h2 id="shop" className="text-5xl font-bold text-black mb-6">Explore Cutting-Edge Gadgets</h2>
-            <div  className="flex w-full px-10 my-10 gap-8 items-start">
-                {/* Sidebar Links */}
+            <div className="flex w-full px-10 my-10 gap-8 items-start">
                 <div className="flex flex-col p-6 border rounded-lg bg-white text-black self-start space-y-4">
                     {["All Products", "Laptops", "Phones", "Accessories", "Smart Watches", "MacBook", "iPhone"].map((category, index) => (
                         <Link
@@ -41,10 +40,7 @@ const Home = () => {
                         </Link>
                     ))}
                 </div>
-
-                {/* Products Component */}
                 <div className="flex-1">
-                    
                     <Products />
                 </div>
             </div>

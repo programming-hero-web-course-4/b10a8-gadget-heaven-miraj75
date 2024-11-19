@@ -3,8 +3,8 @@ import Product from "../Product/Product";
 
 const Products = () => {
     const [products, setProducts] = useState([]);
-    const [error, setError] = useState(null); 
-    const [loading, setLoading] = useState(true); 
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch("Products.json")
@@ -24,8 +24,8 @@ const Products = () => {
             });
     }, []);
 
-    if (loading) return <p>Loading...</p>; 
-    if (error) return <p>Error loading data: {error}</p>; 
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error loading data: {error}</p>;
 
     return (
         <div className="container mx-auto">

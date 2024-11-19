@@ -8,6 +8,7 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import ErrorElement from './Components/ErrorElement/ErrorElement';
 import Home from './Components/Home/Home';
 import ProductsDetails from './Components/ProductsDetails/ProductsDetails';
+import Statistics from './Components/Statistics/Statistics';
 import Root from './Root';
 import './index.css';
 
@@ -15,7 +16,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
-    errorElement: <ErrorElement></ErrorElement>,
+    errorElement: <ErrorElement />,
     children: [
       {
         path: '/',
@@ -26,9 +27,13 @@ const router = createBrowserRouter([
         element: <Dashboard />
       },
       {
+        path: '/statistics',
+        element: <Statistics />
+      },
+      {
         path: 'product/:productId',
         element: <ProductsDetails />,
-        loader: () => fetch('../public/Products.json') 
+        loader: () => fetch('/Products.json') // Corrected path
       }
     ]
   },
